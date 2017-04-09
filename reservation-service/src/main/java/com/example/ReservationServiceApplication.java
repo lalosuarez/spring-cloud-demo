@@ -20,7 +20,7 @@ import javax.persistence.Id;
 import java.util.Arrays;
 import java.util.Collection;
 
-@EnableDiscoveryClient
+//@EnableDiscoveryClient
 @SpringBootApplication
 public class ReservationServiceApplication {
 	@Bean
