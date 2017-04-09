@@ -28,10 +28,10 @@ public class ReservationClientApplication {
 	}
 }
 
-@RestController
+/*@RestController
 @RequestMapping("/reservations")
 class ReservationApiGatewayRestController {
-    
+
     @Autowired
 	@LoadBalanced
 	private RestTemplate restTemplate;
@@ -42,7 +42,7 @@ class ReservationApiGatewayRestController {
                 new ParameterizedTypeReference<Resources<Reservation>>() {};
 
         ResponseEntity<Resources<Reservation>> responseEntity =
-                this.restTemplate.exchange("http://reservation-service/resetvations",
+                this.restTemplate.exchange("http://reservation-service/reservations",
                         HttpMethod.GET, null, ptr);
 
         return responseEntity
@@ -52,34 +52,34 @@ class ReservationApiGatewayRestController {
                 .map(Reservation::getReservationName)
                 .collect(Collectors.toList());
 	}
+}*/
 
-	class Reservation {
+class Reservation {
 
-		private Long id;
-		private String reservationName;
+    private Long id;
+    private String reservationName;
 
-		public Long getId() {
-			return id;
-		}
+    public Long getId() {
+        return id;
+    }
 
-		public void setId(Long id) {
-			this.id = id;
-		}
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-		public String getReservationName() {
-			return reservationName;
-		}
+    public String getReservationName() {
+        return reservationName;
+    }
 
-		public void setReservationName(String reservationName) {
-			this.reservationName = reservationName;
-		}
+    public void setReservationName(String reservationName) {
+        this.reservationName = reservationName;
+    }
 
-		@Override
-		public String toString() {
-			return "Reservation{" +
-					"id=" + id +
-					", reservationName='" + reservationName + '\'' +
-					'}';
-		}
-	}
+    @Override
+    public String toString() {
+        return "Reservation{" +
+                "id=" + id +
+                ", reservationName='" + reservationName + '\'' +
+                '}';
+    }
 }
