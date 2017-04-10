@@ -19,14 +19,17 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.stream.Stream;
 
-//@EnableDiscoveryClient
+@EnableDiscoveryClient
 @SpringBootApplication
 public class ReservationServiceApplication {
 	@Bean
 	CommandLineRunner runner (ReservationRepository rr) {
-		return args -> {
-			Arrays.asList("Eduardo,Karla,Mauricio,Oscar".split(",")).forEach(name -> rr.save(new Reservation(name)));
+		return string -> {
+			Stream.of("Eduardo", "Karla", "Robi", "Goldi", "Bambi")
+					.forEach(name -> rr.save(new Reservation(name)));
+
 			rr.findAll().forEach(System.out::println);
 		};
 	}

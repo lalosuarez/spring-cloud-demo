@@ -1,9 +1,8 @@
-server:
-  port: ${PORT:8050}
-
-#eureka:
-#  client:
-#    registerWithEureka: false
-#    fetchRegistry: false
-#    server:
-#      waitTimeInMsWhenSyncEmpty: 0
+# Increase the Hystrix timeout to 60s (globally)
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 60000
