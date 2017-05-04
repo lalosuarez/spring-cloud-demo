@@ -43,6 +43,7 @@ public class AuthServiceApplication {
 class PrincipalRestController {
 	@RequestMapping("/user")
 	Principal principal(Principal principal) {
+		System.out.println("Principal = " + principal);
 		return principal;
 	}
 }
@@ -58,10 +59,10 @@ class OAuthConfiguration extends AuthorizationServerConfigurerAdapter {
 		this.authenticationManager = authenticationManager;
 	}
 
-	@Override
+	/*@Override
 	public void configure(AuthorizationServerSecurityConfigurer security) throws Exception {
 		security.allowFormAuthenticationForClients();
-	}
+	}*/
 
 	@Override
 	public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
