@@ -30,6 +30,7 @@ import java.util.stream.Stream;
 @EnableDiscoveryClient
 @SpringBootApplication
 public class ReservationServiceApplication {
+
 	@Bean
 	CommandLineRunner runner (ReservationRepository rr) {
 		return string -> {

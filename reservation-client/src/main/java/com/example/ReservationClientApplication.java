@@ -6,6 +6,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.circuitbreaker.EnableCircuitBreaker;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
+import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.cloud.netflix.feign.EnableFeignClients;
 import org.springframework.cloud.netflix.feign.FeignClient;
 import org.springframework.cloud.netflix.zuul.EnableZuulProxy;
@@ -76,34 +77,20 @@ class ReservationApiGatewayRestController {
 
     @RequestMapping(method = RequestMethod.POST)
     public void write(@RequestBody Reservation reservation) {
-
-        try {
-            this.reservationWriter.write(reservation.getReservationName());
-        } catch (Exception e) {
-            e.printStackTrace();
-            throw e;
-        }
+        this.reservationWriter.write(reservation.getReservationName());
     }
 
     @HystrixCommand(fallbackMethod = "getReservationNamesFallBack")
     @RequestMapping(method = RequestMethod.GET, value = "/names")
     public Collection<String> getReservationNames() {
-        System.out.println("getReservationNames executed");
+        //System.out.println("getReservationNames executed");
 
-        Collection<String> collection = new ArrayList<>();
-
-        try {
-            collection = this.reservationReader
-                    .read()
-                    .getContent()
-                    .stream()
-                    .map(Reservation::getReservationName)
-                    .collect(Collectors.toList());
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        return collection;
+        return this.reservationReader
+                .read()
+                .getContent()
+                .stream()
+                .map(Reservation::getReservationName)
+                .collect(Collectors.toList());
     }
 
     public Collection<String> getReservationNamesFallBack() {
