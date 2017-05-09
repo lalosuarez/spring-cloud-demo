@@ -70,7 +70,9 @@ class OAuthConfiguration extends AuthorizationServerConfigurerAdapter {
 				.withClient("acme")
 				.secret("acmesecret")
 				.authorizedGrantTypes("password")
-				.scopes("openid");
+				.scopes("openid")
+				.accessTokenValiditySeconds(30)
+				.refreshTokenValiditySeconds(30);
 	}
 
 	@Override

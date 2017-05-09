@@ -1,0 +1,10 @@
+version: '2.1'
+services:
+  config-server:
+    build: config-server
+    ports:
+      - 8888:8888
+  reservation-service:
+    build: reservation-service
+    ports:
+      - 8000:8000      
