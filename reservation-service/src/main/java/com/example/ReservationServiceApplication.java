@@ -119,8 +119,16 @@ class MessageRestController {
 	@Value("${message:default message here}")
 	private String message;
 
+	@Value("${privateMessage:default private message}")
+	private String privateMessage;
+
 	@RequestMapping("/message")
 	String getMessage() {
 		return this.message;
+	}
+
+	@RequestMapping("/privateMessage")
+	String getPrivateMessage() {
+		return this.privateMessage;
 	}
 }
