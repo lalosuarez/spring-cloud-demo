@@ -1,17 +1,21 @@
-version: '2.1'
+version: '3'
 services:
-  config-server:
-    image: lalossuarez/config-server
-    restart: always
-    ports:
-      - 8888:8888
+  # config-server:
+  #   image: lalossuarez/config-server
+  #   #restart: always
+  #   ports:
+  #     - 8888:8888
   reservation-service:
     image: lalossuarez/reservation-service
-    restart: always
+    # links:
+    #   - config-server    
+    #restart: always
     ports:
       - 8000:8000
   eureka-server:
     image: lalossuarez/eureka-server
-    restart: always
+    # links:
+    #   - config-server
+    #restart: always
     ports:
-      - 8761:8761          
+      - 8761:8761

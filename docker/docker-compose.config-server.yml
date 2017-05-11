@@ -1,0 +1,7 @@
+version: '3'
+services:
+  config-server:
+    image: lalossuarez/config-server
+    #restart: always
+    ports:
+      - 8888:8888

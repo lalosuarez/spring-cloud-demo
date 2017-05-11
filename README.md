@@ -17,3 +17,11 @@ docker build -f src/main/docker/Dockerfile -t docker/config-server .
 docker images
 
 docker run -p 8888:8888 docker/config-server
+
+docker-compose -f docker/docker-compose.yml up -d
+
+First run:
+docker-compose -f docker/docker-compose.config-server.yml up
+
+And then
+docker-compose -f docker/docker-compose.yml up -d
