@@ -6,6 +6,7 @@ services:
   #   ports:
   #     - 8888:8888
   reservation-service:
+    container_name: reservation-service
     image: lalossuarez/reservation-service
     # links:
     #   - config-server    
@@ -13,6 +14,7 @@ services:
     ports:
       - 8000:8000
   eureka-server:
+    container_name: eureka-server
     image: lalossuarez/eureka-server
     # links:
     #   - config-server

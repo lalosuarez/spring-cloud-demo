@@ -1,6 +1,8 @@
+---
 version: '3'
 services:
   config-server:
+    container_name: config-server
     image: lalossuarez/config-server
     #restart: always
     ports:
