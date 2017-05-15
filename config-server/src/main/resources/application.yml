@@ -1,0 +1,36 @@
+server:
+  port: 8888
+
+spring:
+  profiles: default
+  cloud:
+    config:
+      server:
+        git:
+          uri: C:/Users/esuarezv/spring-config-repo
+
+security:
+  basic:
+    enabled: true
+  user:
+    name: configserver
+    password: configserver1
+
+---
+server:
+  port: 8888
+
+spring:
+  profiles: docker
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/lalosuarez/spring-cloud-config-demo
+
+security:
+  basic:
+    enabled: true
+  user:
+    name: configserver
+    password: configserver1

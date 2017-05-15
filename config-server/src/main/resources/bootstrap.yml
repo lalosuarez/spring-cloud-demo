@@ -1,0 +1,6 @@
+encrypt:
+  key-store:
+    location: file:C:/Users/esuarezv/spring-cloud-demo/server.jks
+    password: 0123456789abcdef0123456789abcdef
+    alias: mytestkey
+    secret: 0123456789abcdef0123456789abcdef
