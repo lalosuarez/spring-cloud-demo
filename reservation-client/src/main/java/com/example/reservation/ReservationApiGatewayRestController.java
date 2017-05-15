@@ -46,10 +46,6 @@ class ReservationApiGatewayRestController {
                 .collect(Collectors.toList());
     }
 
-    public String getReservationName() {
-
-    }
-
     public Collection<String> getReservationNamesFallBack() {
         System.out.println("getReservationNamesFallBack method executed!!!");
         return new ArrayList<>();
