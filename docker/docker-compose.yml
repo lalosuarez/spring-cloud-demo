@@ -2,22 +2,19 @@ version: '3'
 services:
   # config-server:
   #   image: lalossuarez/config-server
-  #   #restart: always
   #   ports:
   #     - 8888:8888
   reservation-service:
     container_name: reservation-service
     image: lalossuarez/reservation-service
-    # links:
-    #   - config-server    
-    #restart: always
+    depends_on:
+      - config-server
     ports:
-      - 8000:8000
+      - 8000:8081
   eureka-server:
     container_name: eureka-server
     image: lalossuarez/eureka-server
-    # links:
-    #   - config-server
-    #restart: always
+    depends_on:
+      - config-server
     ports:
-      - 8761:8761
+      - 8761:8081

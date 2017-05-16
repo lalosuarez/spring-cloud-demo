@@ -2,7 +2,7 @@ FROM java:8
 VOLUME /tmp
 ADD /target/eureka-server-0.0.1.jar app.jar
 RUN sh -c 'touch /app.jar'
-EXPOSE 8761
+#EXPOSE 8761
 
 # Sets de profile passed in docker build --build-arg profiles=default
 # to run de app with the desired profile

@@ -24,6 +24,7 @@ public class ReservationServiceApplication {
 	}
 
 	public static void main(String[] args) {
+		System.out.println("\n--> PROFILE = " + System.getProperty("spring.profiles.active") + "\n");
 		SpringApplication.run(ReservationServiceApplication.class, args);
 	}
 }
