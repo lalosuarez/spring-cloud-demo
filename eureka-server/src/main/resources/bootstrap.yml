@@ -1,3 +1,4 @@
+# Config for default profile (local development)
 spring:
   profiles: default
   application:
@@ -5,16 +6,17 @@ spring:
   cloud:
     config:
       uri: http://localhost:8888
-      fail-fast: false
+      failFast: false
       username: configserver
       password: configserver1
 
+# Config for docker profile (deploying using docker)
 ---
 spring:
   profiles: docker
   cloud:
     config:
       uri: http://192.168.99.100:8888
-      fail-fast: false
+      failFast: false
       username: configserver
       password: configserver1

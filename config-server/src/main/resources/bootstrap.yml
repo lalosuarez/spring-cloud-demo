@@ -1,6 +1,22 @@
+# Config for default profile (local development)
+spring:
+  profiles: default
+
 encrypt:
-  key-store:
-    location: file:C:/Users/esuarezv/spring-cloud-demo/server.jks
+  keyStore:
+    location: file:C:/Users/esuarezv/spring-cloud-demo/config-server/server.jks
+    password: 0123456789abcdef0123456789abcdef
+    alias: mytestkey
+    secret: 0123456789abcdef0123456789abcdef
+
+# Config for docker profile (deploying using docker)
+---
+spring:
+  profiles: docker
+
+encrypt:
+  keyStore:
+    location: file:/server.jks
     password: 0123456789abcdef0123456789abcdef
     alias: mytestkey
     secret: 0123456789abcdef0123456789abcdef

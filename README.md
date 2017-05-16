@@ -12,11 +12,11 @@ Reference
 https://cloud.spring.io/spring-cloud-config/spring-cloud-config.html#_security
 
 # Docker
-docker build -f src/main/docker/Dockerfile -t docker/config-server .
+docker build --build-arg profiles=default -f src/main/docker/Dockerfile -t lalossuarez/config-server .
 
 docker images
 
-docker run -p 8888:8888 docker/config-server
+docker run -p 8888:8888 --name config-server lalossuarez/config-server
 
 docker-compose -f docker/docker-compose.yml up -d
 
