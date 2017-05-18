@@ -11,7 +11,22 @@ keytool -genkeypair -alias mytestkey -keyalg RSA -dname "CN=Web Server,OU=Unit,O
 Reference
 https://cloud.spring.io/spring-cloud-config/spring-cloud-config.html#_security
 
-# Docker
+# Docker config-server
+docker build --build-arg profiles=docker -f src/main/docker/Dockerfile -t lalossuarez/config-server .
+
+docker run -p 8888:8888 --name config-server lalossuarez/config-server
+
+# Docker eureka-server
+docker build --build-arg profiles=docker -f src/main/docker/Dockerfile -t lalossuarez/eureka-server .
+
+docker run -p 8761:8081 --name eureka-server lalossuarez/eureka-server
+
+# Docker reservation-service
+docker build --build-arg profiles=docker -f src/main/docker/Dockerfile -t lalossuarez/reservation-service .
+
+docker run -ti --rm --link config-server:config-server -p 8000:8081 --name reservation-service lalossuarez/reservation-service
+
+# Docker commands
 docker build --build-arg profiles=docker -f src/main/docker/Dockerfile -t lalossuarez/config-server .
 
 docker images

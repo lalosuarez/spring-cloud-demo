@@ -23,6 +23,7 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.E
 @SpringBootApplication
 public class ReservationClientApplication {
 	public static void main(String[] args) {
+		System.out.println("\n--> PROFILE = " + System.getProperty("spring.profiles.active") + "\n");
 		SpringApplication.run(ReservationClientApplication.class, args);
 	}
 }
