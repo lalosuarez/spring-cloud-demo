@@ -8,7 +8,7 @@ spring:
     config:
       server:
         git:
-          uri: C:/Users/esuarezv/spring-config-repo
+          uri: ${user.home}/spring-config-repo
 
 security:
   basic:

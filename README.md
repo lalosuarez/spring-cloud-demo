@@ -14,12 +14,12 @@ https://cloud.spring.io/spring-cloud-config/spring-cloud-config.html#_security
 # Docker config-server
 docker build --build-arg profiles=docker -f src/main/docker/Dockerfile -t lalossuarez/config-server .
 
-docker run -p 8888:8888 --name config-server lalossuarez/config-server
+docker run --rm -p 8888:8888 --name config-server lalossuarez/config-server
 
 # Docker eureka-server
 docker build --build-arg profiles=docker -f src/main/docker/Dockerfile -t lalossuarez/eureka-server .
 
-docker run -p 8761:8081 --name eureka-server lalossuarez/eureka-server
+docker run --rm -p 8761:8081 --name eureka-server lalossuarez/eureka-server
 
 # Docker reservation-service
 docker build --build-arg profiles=docker -f src/main/docker/Dockerfile -t lalossuarez/reservation-service .

@@ -4,7 +4,7 @@ spring:
 
 encrypt:
   keyStore:
-    location: file:C:/Users/esuarezv/spring-cloud-demo/config-server/server.jks
+    location: file:${user.home}/spring-cloud-demo/config-server/server.jks
     password: 0123456789abcdef0123456789abcdef
     alias: mytestkey
     secret: 0123456789abcdef0123456789abcdef
