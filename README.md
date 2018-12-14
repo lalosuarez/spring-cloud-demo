@@ -1,6 +1,9 @@
 # spring-cloud-demo
 Microservices for spring centralized configuration, proxy and api gateway
 
+# microservices urls
+config-service http://localhost:8888/reservation-service/default
+
 # Download Java Cryptography Extension (JCE)
 Extract the jar files from the zip and save them in ${java.home}/jre/lib/security/
 http://www.oracle.com/technetwork/java/javase/downloads/jce8-download-2133166.html

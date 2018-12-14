@@ -1,0 +1,19 @@
+# Config for default profile (local development)
+spring:
+  profiles: default
+  sleuth:
+    enabled: true
+  datasource:
+    initialize: false
+
+server:
+  port: ${PORT:9411}
+
+zipkin:
+  store:
+    type: mem
+
+# Config for docker profile (deploying using docker)
+---
+spring:
+  profiles: docker

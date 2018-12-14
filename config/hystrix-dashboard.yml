@@ -1,0 +1,11 @@
+# Config for default profile (local development)
+spring:
+  profiles: default
+
+server:
+  port: ${PORT:8010}
+
+# Config for docker profile (deploying using docker)
+---
+spring:
+  profiles: docker

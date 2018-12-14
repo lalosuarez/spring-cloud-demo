@@ -8,7 +8,8 @@ spring:
     config:
       server:
         git:
-          uri: ${user.home}/spring-config-repo
+          # uri: ${user.home}/spring-config-repo
+          uri: https://github.com/lalosuarez/spring-cloud-config-demo
 
 security:
   basic:

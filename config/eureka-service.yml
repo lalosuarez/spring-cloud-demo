@@ -1,0 +1,40 @@
+spring:
+  profiles: default
+
+server:
+  port: ${PORT:8761}
+
+eureka:
+  # instance:
+    # hostname: ${vcap.application.uris[0]}
+    # preferIpAddress: true
+    # ip-address: 192.168.99.100
+    # instanceId: ${spring.application.name}:${vcap.application.instance_id:${spring.application.instance_id:${random.value}}}    
+  client:
+    registerWithEureka: false
+    fetchRegistry: false
+    # Registers all the eureka's servers by Comma separated list
+    # for dev is good but for prod it's better to have multiple eureka servers
+    # eureka.client.serviceUrl.defaultZone=http://localhost:8761/eureka/,http://<host>:<port>/eureka/
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+  server:
+    # enableSelfPreservation: false
+    waitTimeInMsWhenSyncEmpty: 0  
+
+---
+spring:
+  profiles: docker
+
+server:
+  port: ${PORT:8761}
+
+eureka:
+  client:
+    registerWithEureka: false
+    fetchRegistry: false
+    serviceUrl:
+      defaultZone: http://localhost:8080/eureka/
+  server:
+    # enableSelfPreservation: false
+    waitTimeInMsWhenSyncEmpty: 0        

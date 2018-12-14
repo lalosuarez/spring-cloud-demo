@@ -1,0 +1,21 @@
+# Config for default profile (local development)
+spring:
+  profiles: default
+
+server:
+  port: 9191
+  contextPath: /uaa
+
+logging:
+  level:
+    org:
+      springframework:
+        security: DEBUG
+ 
+security:
+sessions: if_required
+
+# Config for docker profile (deploying using docker)
+---
+spring:
+  profiles: docker

@@ -1,0 +1,52 @@
+# Config for default profile (local development)
+spring:
+  profiles: default
+  cloud:
+    stream:
+      bindings:
+        output:
+          destination: reservations
+
+security:
+  oauth2:
+    resource:
+      userInfoUri: http://localhost:9191/uaa/user
+
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 70000
+          # strategy: SEMAPHORE
+
+server:
+  port: ${PORT:9999}
+
+# Config for docker profile (deploying using docker)
+---
+spring:
+  profiles: docker
+  cloud:
+    stream:
+      bindings:
+        output:
+          destination: reservations
+
+security:
+  oauth2:
+    resource:
+      userInfoUri: http://192.168.99.100:9191/uaa/user
+
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 70000
+          # strategy: SEMAPHORE
+
+server:
+  port: ${PORT:9999}

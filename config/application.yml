@@ -1,0 +1,129 @@
+# # disable JMX
+# endpoints.jmx.enabled=false
+# spring.jmx.enabled=false
+
+# debug=true
+# spring.sleuth.sampler.percentage=1.0
+
+# info.id=${spring.application.name}
+
+# server.port=${PORT:8081}
+
+# management.security.enabled=false
+
+# logging.level.org.springframework.security=DEBUG
+# #logging.pattern.console=%clr(%d{yyyy-MM-dd HH:mm:ss.SSS}){faint} %clr(%5p) %clr(${PID:- }){magenta} %clr(---){faint} %clr([trace=%X{X-Trace-Id:-},span=%X{X-Span-Id:-}]){yellow} %clr([%15.15t]){faint} %clr(%-40.40logger{39}){cyan} %clr(:){faint} %m%n%wex
+
+# spring.sleuth.log.json.enabled=true
+
+# #spring.zipkin.host=${DOCKER_IP}
+
+# spring.cloud.consul.host=${DOCKER_HOST}
+# #spring.cloud.consul.discovery.hostname=${DOCKER_HOST_IP:cna}
+
+# logging.level.com.netflix.eureka=OFF
+# logging.level.com.netflix.discovery=OFF
+# logging.level.org.springframework.web.servlet.DispatcherServlet=DEBUG
+
+# #spring.rabbitmq.host=${DOCKER_IP}
+# #spring.redis.host=${DOCKER_IP}
+
+# #spring.zipkin.base-url=http://${DOCKER_IP}:9411
+# #spring.zipkin.base-url=http://127.0.0.1:9411
+
+# endpoints.shutdown.enabled=true
+
+# spring.jpa.generate-ddl=true
+
+# #eureka.instance.hostname=http://192.168.99.100
+# #eureka.instance.prefer-ip-address=true
+# #eureka.instance.ip-address=192.168.99.100
+# #eureka.instance.nonSecurePort=80
+
+# ## Rabbit specific binder bits
+# spring.cloud.stream.binder.rabbit.default.default-delivery-mode=persistent
+# spring.cloud.stream.binder.rabbit.default.acknowledge-mode=manual
+# spring.cloud.stream.binder.rabbit.default.durable-subscription=true
+# spring.cloud.stream.binder.rabbit.default.transacted=true
+# spring.cloud.stream.binder.rabbit.default.default-requeue-rejected=true
+# spring.cloud.stream.binder.rabbit.default.auto-bind-dlq=true
+# spring.cloud.stream.binder.rabbit.default.republish-to-dlq=true
+
+# #spring.rabbitmq.addresses=${vcap.services.${PREFIX:}rabbitmq.credentials.uri:amqp://${RABBITMQ_HOST:localhost}:${RABBITMQ_PORT:5672}}
+# #spring.rabbitmq.dynamic=true
+# #spring.rabbitmq.host=localhost
+# #spring.rabbitmq.port=5672
+# #spring.rabbitmq.virtual-host=cep-host
+# #spring.rabbitmq.username=cep
+# #spring.rabbitmq.password=cep123
+
+spring:
+  profiles: default
+
+message: This is a message from application yml default profile
+privateMessage: '{cipher}AQA4N82pzeLxqyYAT2+bHxS5VvldegWOUeyDIw0a0948eUgkIIuHsvoypMt1M3H4xR4ELDpHY8B9DRqu6WN6oMZNsU0yc9iQPKX7+S9DY1iDqsYkknwNnYYAukYCfP3dNGQJ0OQAHuTsm8tuY1/HOlAtn/aS5Ji+QBoTCu6235DSsEDroXFir5R36/C3KxcGSf/jvgaacDWHhOFitRuCX+W5q9m3uFs07akmoqu1TBCMvi+RUXTUD95Vi9PlmfqnhVcz7McTk1HqIEpfo7eBlZVt+hIENh51n+Ij9OfY6sgGjk/5R1F06SPya2dfewtzOHv3YpzY1fdrXFHLzvtJY31de7HWhuHo5QhVn1boZZuBVQJkAfvfJTzdJAMqIxa+RdwZAaUlIE3CUijmBTNtgZdm'
+
+server:
+  port: ${PORT:8081}
+
+
+
+
+---
+spring:
+  profiles: docker
+  cloud:
+    stream:
+      bindings:
+        input:
+          destination: reservations
+          group: reservations-group
+          durableSubscription: true
+  jmx:
+    enabled: false          
+  sleuth:
+    sampler:
+      percentage: 1.0
+    log:
+      json:
+        enabled: true
+eureka:
+  instance:
+    preferIpAddress: true 
+    leaseRenewalIntervalInSeconds: 5
+    leaseExpirationDurationInSeconds: 2
+  client:
+    region: docker
+    registryFetchIntervalSeconds: 5
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+    healthcheck:
+      enabled: true
+    lease:
+      duration: 5
+    registerWithEureka: false
+    fetchRegistry: false
+  server:
+    # enableSelfPreservation: false
+    waitTimeInMsWhenSyncEmpty: 0
+
+message: This is a message from application yml docker profile
+privateMessage: '{cipher}AQA4N82pzeLxqyYAT2+bHxS5VvldegWOUeyDIw0a0948eUgkIIuHsvoypMt1M3H4xR4ELDpHY8B9DRqu6WN6oMZNsU0yc9iQPKX7+S9DY1iDqsYkknwNnYYAukYCfP3dNGQJ0OQAHuTsm8tuY1/HOlAtn/aS5Ji+QBoTCu6235DSsEDroXFir5R36/C3KxcGSf/jvgaacDWHhOFitRuCX+W5q9m3uFs07akmoqu1TBCMvi+RUXTUD95Vi9PlmfqnhVcz7McTk1HqIEpfo7eBlZVt+hIENh51n+Ij9OfY6sgGjk/5R1F06SPya2dfewtzOHv3YpzY1fdrXFHLzvtJY31de7HWhuHo5QhVn1boZZuBVQJkAfvfJTzdJAMqIxa+RdwZAaUlIE3CUijmBTNtgZdm'
+
+server:
+  port: ${PORT:8081}
+
+# disable JMX
+endpoints:
+  jmx:
+    enabled: false
+
+logging:
+  level:
+    org:
+      springframework:
+        security: DEBUG
+    com:
+      netflix:
+        eureka: OFF
+        discovery: OFF  
