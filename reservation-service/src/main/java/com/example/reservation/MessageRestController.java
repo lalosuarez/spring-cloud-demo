@@ -19,6 +19,7 @@ class MessageRestController {
 
     @RequestMapping("/message")
     String getMessage() {
+        System.out.println("returning message: " + this.message);
         return this.message;
     }
 
