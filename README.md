@@ -7,6 +7,7 @@ eureka-service          http://localhost:8761
 reservation-service     http://localhost:8000/reservations
 reservation-client      http://localhost:9999/reservations/names
 auth-service            http://localhost:9191/uaa/oauth/token
+RabbitMQ                http://127.0.0.1:15672 (guest/guest)
 
 # Download Java Cryptography Extension (JCE)
 Extract the jar files from the zip and save them in ${java.home}/jre/lib/security/
@@ -62,3 +63,13 @@ docker volume rm $(docker volume ls -q)
 To clear networks:
 
 docker network rm $(docker network ls | tail -n+2 | awk '{if($2 !~ /bridge|none|host/){ print $1 }}')
+
+# NOTES
+To run this project you must have RabbitMQ up and running in your local environmnet.
+Use the provided docker-compose.yml to start an instance of RabbitMQ using docker.
+
+- To start RabbitMQ execute: docker-compose up -d
+- To stop RabbitMQ execute: docker-compose down
+
+# References
+- https://www.youtube.com/watch?v=JUqZxUlixSw&index=22&list=PLW9FvQJ77BmJCvFFr50_-PaqQVf3hTb0O

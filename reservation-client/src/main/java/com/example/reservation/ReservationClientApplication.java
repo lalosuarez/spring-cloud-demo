@@ -14,7 +14,7 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.E
  * Micro proxy service
  */
 @IntegrationComponentScan
-@EnableResourceServer
+//@EnableResourceServer
 @EnableBinding(ReservationChannels.class)
 @EnableFeignClients
 @EnableZuulProxy
