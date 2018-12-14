@@ -2,7 +2,11 @@
 Microservices for spring centralized configuration, proxy and api gateway
 
 # microservices urls
-config-service http://localhost:8888/reservation-service/default
+config-service          http://localhost:8888/reservation-service/default
+eureka-service          http://localhost:8761
+reservation-service     http://localhost:8000/reservations
+reservation-client      http://localhost:9999/reservations/names
+auth-service            http://localhost:9191/uaa/oauth/token
 
 # Download Java Cryptography Extension (JCE)
 Extract the jar files from the zip and save them in ${java.home}/jre/lib/security/

@@ -10,6 +10,8 @@ spring:
         git:
           # uri: ${user.home}/spring-config-repo
           uri: https://github.com/lalosuarez/spring-cloud-config-demo
+          # uri: https://github.com/lalosuarez/spring-cloud-demo/tree/master/config
+          searchPaths: config
 
 security:
   basic:
